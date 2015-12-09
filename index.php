@@ -15,12 +15,15 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">Convertir Shape a Sql</div>
                             <div class="panel-body">                              
-                                                                
-                                <form class="form-horizontal">
+                                                            
+                                <a href="../shptosql/class/shpsql.php">ir</a>
+                            <form method="POST" action="../shptosql/class/shpsql.php" class="form-horizontal" enctype="multipart/form-data">
                                 <div class="form-group">
                                   <label for="fileShape" class="col-sm-2 control-label">Seleccione archivo Shape</label>
                                   <div class="col-sm-10">
-                                    <input type="file" id="fileShape" name="fileShape" class="form-control">
+                                    <!--<input type="file" id="fileShape" name="fileShape" class="form-control" webkitdirectory directory multiple>-->
+                                      <input type="file" id="fileShape" name="fileShape" class="form-control">
+                                    <p class="help-block">Nota: Ruta del directorio donde se encuentra el shape</p>
                                   </div>
                                 </div>
                                 <div class="form-group">
@@ -76,7 +79,6 @@
                                         <option>12</option>                                                                            
                                     </select>
                                     
-                                
                                     <select name="fi_anio" id="fi_anio">
                                         <option>2001</option>
                                         <option>2002</option>
@@ -152,8 +154,7 @@
                                         <option>11</option>
                                         <option>12</option>                                                                            
                                     </select>
-                                    
-                                
+
                                     <select name="ff_anio" id="ff_anio">
                                         <option>2001</option>
                                         <option>2002</option>
@@ -183,9 +184,7 @@
                                     <button type="submit" class="btn btn-default">Exportar Shape</button>
                                   </div>
                                 </div>
-                              </form>
-                                
-                                
+                             </form>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
                                       80%
