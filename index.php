@@ -42,11 +42,11 @@
                             <div class="panel-body">
                             <form  id="form-shpsql" action="" method="post" class="form-horizontal">
                                 <div class="form-group">
-                                  <label for="fileShape" class="col-sm-2 control-label">Seleccionar 3 archivos </label>
+                                  <label for="fileShape" class="col-sm-2 control-label">Seleccionar archivos </label>
                                   <div class="col-sm-10">
                                     <!--<input type="file" id="fileShape" name="fileShape" class="form-control" webkitdirectory directory multiple>-->
                                       <input type="file" id="fileShape" name="fileShape[]" class="form-control" multiple>
-                                      <p class="help-block">Nota: selecciona archivo con extensión <b>(*.shp)(*.dbf)(*.shx)</b></p>
+                                      <p class="help-block">Nota: seleccionar 3 archivos con extensión <b>(*.shp) , (*.dbf) , (*.shx)</b></p>
                                   </div>
                                 </div>
  
