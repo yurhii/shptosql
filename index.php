@@ -5,7 +5,32 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Shape to sql</title>
         <link href="public/css/micss.css" rel="stylesheet" media="screen">
-        <link href="public/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="public/css/bootstrap.css" rel="stylesheet" media="screen">        
+        <script src="public/js/jquery-2.1.1.min.js" type="text/javascript"></script>        
+        <script src="public/js/bootstrap.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function (e) {
+            $("#form-shpsql").on('submit',(function(e) {
+                e.preventDefault();
+                $("#message").empty();
+                $('#loading').show();
+            $.ajax({
+                url: "class/shpsql.php",
+                type: "POST",             
+                data: new FormData(this),
+                contentType:false,
+                cache: false,
+                processData:false,
+                success: function(data)   
+                {
+                $('#loading').hide();
+                $("#message").html(data);
+                }
+            });
+            }));
+        });
+        </script>
+        
     </head>
     <body style="margin-bottom: 0; padding: 0;">
         <div class="contenido" id="container">            
@@ -14,10 +39,8 @@
                     <div class="col-md-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">Convertir Shape a Sql</div>
-                            <div class="panel-body">                              
-                                                            
-                            
-                            <form method="POST" action="../shptosql/class/shpsql.php" class="form-horizontal" enctype="multipart/form-data">
+                            <div class="panel-body">
+                            <form  id="form-shpsql" action="" method="post" class="form-horizontal">
                                 <div class="form-group">
                                   <label for="fileShape" class="col-sm-2 control-label">Seleccionar 3 archivos </label>
                                   <div class="col-sm-10">
@@ -26,7 +49,40 @@
                                       <p class="help-block">Nota: selecciona archivo con extensión <b>(*.shp)(*.dbf)(*.shx)</b></p>
                                   </div>
                                 </div>
+ 
+                                
                                 <div class="form-group">
+                                  <div class="col-sm-offset-2 col-sm-10">
+                                        <input type="submit" value="Procesar Shape" class="btn btn-default" />
+                                  </div>
+                                </div>
+                             </form>
+                               <center>
+                                <h4 id='loading' style="display: none;" >
+                                    <img src="public/image/loading.GIF">
+                                    Procesando shape
+                                </h4>
+                                   <div id="message">
+                                       
+                                   </div>
+                                </center>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <footer>
+            <center>
+                <h4>                   
+                    </h4> &copy; ShapeToSql - 2015                   
+            </center>
+        </footer>
+        
+    </body>
+</html>
+
+<!--                                <div class="form-group">
                                   <label for="txtFechaInicio" class="col-sm-2 control-label">Fecha Inicio (dia/mes/año)</label>
                                   <div class="col-sm-10">
                                       <div class="form-control">
@@ -177,33 +233,5 @@
                                           
                                       </div>
                                   </div>
-                                </div>
-                                    
-                                <div class="form-group">
-                                  <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Exportar Shape</button>
-                                  </div>
-                                </div>
-                             </form>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                                      80%
-                                    </div>
-                                </div>
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>            
-        </div>
-        <footer>
-            <center>
-                <h4>                   
-                    </h4> &copy; ShapeToSql - 2015                   
-            </center>
-        </footer>
-    </body>
-</html>
+                                </div>-->
+                                  
