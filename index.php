@@ -16,14 +16,14 @@
                             <div class="panel-heading">Convertir Shape a Sql</div>
                             <div class="panel-body">                              
                                                             
-                                <a href="../shptosql/class/shpsql.php">ir</a>
+                            
                             <form method="POST" action="../shptosql/class/shpsql.php" class="form-horizontal" enctype="multipart/form-data">
                                 <div class="form-group">
-                                  <label for="fileShape" class="col-sm-2 control-label">Seleccione archivo Shape</label>
+                                  <label for="fileShape" class="col-sm-2 control-label">Seleccionar 3 archivos </label>
                                   <div class="col-sm-10">
                                     <!--<input type="file" id="fileShape" name="fileShape" class="form-control" webkitdirectory directory multiple>-->
-                                      <input type="file" id="fileShape" name="fileShape" class="form-control">
-                                    <p class="help-block">Nota: Ruta del directorio donde se encuentra el shape</p>
+                                      <input type="file" id="fileShape" name="fileShape[]" class="form-control" multiple>
+                                      <p class="help-block">Nota: selecciona archivo con extensión <b>(*.shp)(*.dbf)(*.shx)</b></p>
                                   </div>
                                 </div>
                                 <div class="form-group">

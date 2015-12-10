@@ -1,41 +1,38 @@
 <?php
+//data conecction with postgres
+define('DB_HOST', 'localhost');
+define('DB_PORT', '5432');     
+define('DB_NAME', 'siarapurimac');
+define('DB_USER', 'postgres');
+define('DB_PASS', '123456');
 
-define('DB_HOST', 'localhost');  // MySQL server hostname
-define('DB_PORT', '5432');       // MySQL server port number (default 3306)
-define('DB_NAME', 'siarapurimac');       // MySQL database name
-define('DB_USER', 'postgres');   // MySQL username
-define('DB_PASS', '123456');       // password
-
-if ($_FILES['fileShape']["error"] > 0){
-  echo "Error: " . $_FILES['fileShape']['error'] . "<br>";
+if ($_FILES['fileShape']["error"][0] > 0){
+  echo "Error: " . $_FILES['fileShape']['error'][0] . "<br>";
 }else{
-    $fileName = $_FILES['fileShape']['name'];    
-    move_uploaded_file($_FILES['fileShape']['tmp_name'],"../sql/" . $_FILES['fileShape']['name']);
+    for ($index = 0; $index < count($_FILES['fileShape']['name']); $index++) {
+        //file move to folder shape
+        move_uploaded_file($_FILES['fileShape']['tmp_name'][$index],"../shape/" . $_FILES['fileShape']['name'][$index]);
+        //capture extension the file shp
+        $extensionfile = explode('.', $_FILES['fileShape']['name'][$index]);
+        //compare if equal shp
+        if($extensionfile[1]=='shp'){
+            //save file name the file shape with extension
+            $fileName = $_FILES['fileShape']['name'][$index];
+            //save file name
+            $name = $extensionfile[0];
+        }
+    }    
+    //convert file shape to sql and sabe file .sql in directory shape
+    exec("shp2pgsql -W Latin1 -s 24047 ../shape/".$fileName." ".$name." > ../sql/".$name.".sql");
+    //string conecction with postgres
     $db = new PDO('pgsql:host=' . DB_HOST . ';'
                      . 'port=' . DB_PORT . ';'
                      . 'dbname=' . DB_NAME . ';'
                      . 'user=' . DB_USER . ';'
                      . 'password=' . DB_PASS);
-    //$db = pg_connect("host=localhost port=5432 dbname=siarapurimac user=postgres password=123456");
-    $sql = file_get_contents('../sql/'.$fileName); //file name should be name of SQL file with .sql extension. 
-    $qr = $db->exec($sql);    
+    // get contents file .sql
+    $sql = file_get_contents('../sql/'.$name.'.sql');
+    //execute content the file .sql and return one number if is correct
+    $qr = $db->exec($sql);
     echo($qr);
-    
 }
-
-
-//shell_exec("C:\\path\\to\\cmd.exe /c C:\\batchfile.cmd");
-//if ($_FILES['fileShape']["error"] > 0){
-//  echo "Error: " . $_FILES['fileShape']['error'] . "<br>";
-//}else{
-//    $fileName = $_FILES['fileShape']['name'];
-//    
-//    //exec("shp2pgsql -W Latin1 -s 24047 F:\\aviso_65_2015\\".$fileName. "aviso_65_nevadas > F:\\aviso_65_2015\\aviso_65_nevadas.sql");
-//    echo $fileName;
-//    //psql -d basededatos -h localhost -U postgres -p54321 -f ocean.sql
-//    exec("psql -d siarapurimac -h localhost -U postgres -w -p 5432 -f F:\\aviso_65_2015\\aviso_65_nevadas.sql");
-//    //Password for user postgres:
-//    //exec("psql siarapurimac < F:\\aviso_65_2015\\aviso_65_nevadas.sql");
-//    //exec("Password:123456");
-//}
-//exec('shp2pgsql -W Latin1 -s 24047 F:\aviso_88_2015\aviso88_2015.shp aviso88_2015 > F:\aviso_88_2015\aviso88_2015.sql');
