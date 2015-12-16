@@ -33,6 +33,7 @@
         
     </head>
     <body style="margin-bottom: 0; padding: 0;">
+       
         <div class="contenido" id="container">            
             <div class="col-md-12">
                	<div class="row">
@@ -62,9 +63,9 @@
                                     <img src="public/image/loading.GIF">
                                     Procesando shape
                                 </h4>
-                                   <div id="message">
+                                <div id="message">
                                        
-                                   </div>
+                                </div>
                                 </center>
                             </div>                            
                         </div>
