@@ -53,7 +53,7 @@ if ($_FILES['fileShape']["error"][0] > 0){
                 }
             }            
             //convert file shape to sql and sabe file .sql in directory shape
-            exec("shp2pgsql -W Latin1 -s 4326 ../shape/".$fileName." ".$name." > ../sql/".$name.".sql");
+            exec("shp2pgsql -W Latin1 -s 4326 ../shape/".$fileName." alerta.".$name." > ../sql/".$name.".sql");
             //string connection with postgres
             $db = new PDO('pgsql:host=' . DB_HOST . ';'
                              . 'port=' . DB_PORT . ';'

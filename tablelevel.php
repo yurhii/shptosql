@@ -11,24 +11,28 @@
     
     </head>
     <body style="margin-bottom: 0; padding: 0;">
-       
         <?php
             require_once("class/queryalert.php");
             $tablaLevel = new Queryalert();
-//            foreach ($tablaLevel->getData() as $value) {
-//                echo $value['nombre'].'<br>';
-//            }
+            
+            if(!empty($_POST['rbtnLocality']) && !empty($_POST['rbtnAlert'])){
+                $locality = $_POST['rbtnLocality'];
+                $alert = $_POST['rbtnAlert'];
+            }else{                
+                $msjError = ' Seleccione una alerta...';
+                header("Location: alerta.php?msj=$msjError");                
+            }
         ?>
-        
         <div class="contenido" id="container">
-            <div class="row">
-            <div class="col-md-10">
+            <br>
+            <div class="col-md-12">
                	<div class="row">
-<!--                    <div class="col-md-7">-->
+                <div class="col-md-10 col-md-offset-1">
                         <div class="panel panel-primary">
                             <div class="panel-heading">NIVEL DE ALERTAS</div>
                             <div class="panel-body">
-                                <div class="col-md-7">
+                                <div class="col-md-8">
+                                    
                                 <table class="table table-bordered">
                                     <thead style="background-color: #D9EDF7">
                                     <th>Provincia</th>
@@ -40,12 +44,17 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($tablaLevel->getLevelDis() as $value) { ?>
+                                        foreach ($tablaLevel->getLevelLocality($locality,$alert) as $value) { ?>
                                         <tr>
                                             <?php 
                                             $localidad = explode('.', $value['nombre']);
                                             $provincia = $localidad[0];
-                                            $distrito = $localidad[1];                                            
+                                            if(count($localidad) == 2 ){
+                                                $distrito = $localidad[1];
+                                            }else{
+                                                $distrito = '';
+                                            }
+                                            
                                             ?>
                                             <td><?php echo $provincia; ?></td>
                                             <td><?php echo $distrito; ?></td>                                            
@@ -66,7 +75,7 @@
                                                 echo '<td style="background-color: orange;"></td>';
                                             }else{
                                                 echo '<td></td>';
-                                            }                                            
+                                            }
                                             
                                             if($value['nivel4']=='Nivel 4'){
                                                 echo '<td style="background-color: red;"></td>';
@@ -81,22 +90,23 @@
                                         ?>
                                     </tbody>
                                 </table>
-                                
+                                <a href="alerta.php" class="btn btn-info">Volver a Alertas</i></a>
                                
-                            </div>  
-                                <div class="col-md-5">
-                        <img src="public/image/nivel_alertas.gif">
-                    </div>
+                                </div>  
+                            <div class="col-md-4">
+                                
+                                <img src="public/image/nivel_alertas.gif">
+                                
+                                
+                            </div>
+                            </div>
                         </div>
-                    </div>
-                    
+                </div>
                 </div>
             </div>            
-            </div>
-        </div>
-        
-        
+        </div>        
     </body> 
 </html>
 
                       
+

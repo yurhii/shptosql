@@ -49,9 +49,7 @@
                                       <input type="file" id="fileShape" name="fileShape[]" class="form-control" multiple>
                                       <p class="help-block">Nota: seleccionar 3 archivos con extensión <b>(*.shp) , (*.dbf) , (*.shx)</b></p>
                                   </div>
-                                </div>
- 
-                                
+                                </div>                                
                                 <div class="form-group">
                                   <div class="col-sm-offset-2 col-sm-10">
                                         <input type="submit" value="Procesar Shape" class="btn btn-default" />
