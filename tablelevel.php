@@ -20,13 +20,15 @@
 //            }
         ?>
         
-        <div class="contenido" id="container">            
-            <div class="col-md-12">
+        <div class="contenido" id="container">
+            <div class="row">
+            <div class="col-md-10">
                	<div class="row">
-                    <div class="col-md-12">
+<!--                    <div class="col-md-7">-->
                         <div class="panel panel-primary">
-                            <div class="panel-heading">Convertir Shape a Sql</div>
+                            <div class="panel-heading">NIVEL DE ALERTAS</div>
                             <div class="panel-body">
+                                <div class="col-md-7">
                                 <table class="table table-bordered">
                                     <thead style="background-color: #D9EDF7">
                                     <th>Provincia</th>
@@ -38,7 +40,7 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($tablaLevel->getData() as $value) { ?>
+                                        foreach ($tablaLevel->getLevelDis() as $value) { ?>
                                         <tr>
                                             <?php 
                                             $localidad = explode('.', $value['nombre']);
@@ -49,7 +51,7 @@
                                             <td><?php echo $distrito; ?></td>                                            
                                             <?php
                                             if($value['nivel1']=='Nivel 1'){
-                                                echo '<td style="background-color: #e8e8e8;"></td>';
+                                                echo '<td style="background-color: #f5f5f5;"></td>';
                                             }else{
                                                 echo '<td></td>';
                                             }                                            
@@ -81,20 +83,20 @@
                                 </table>
                                 
                                
-                            </div>                            
+                            </div>  
+                                <div class="col-md-5">
+                        <img src="public/image/nivel_alertas.gif">
+                    </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>            
+            </div>
         </div>
-        <footer>
-            <center>
-                <h4>                   
-                    </h4> &copy; ShapeToSql - 2015                   
-            </center>
-        </footer>
         
-    </body>
+        
+    </body> 
 </html>
 
                       

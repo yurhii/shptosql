@@ -1,5 +1,12 @@
 <?php
 
+
+//exec("shp2pgsql -W Latin1 -s 4326 F:\aviso_88_2015\aviso88_2015.shp aviso88_2015 > F:\aviso_88_2015\avis88_2015.sql");
+//exec("shp2pgsql -W Latin1 -s 4326 ../shape/".$fileName." ".$name." > ../sql/".$name.".sql");
+//echo exec("C:/Program Files (x86)/Notepad++/notepad++.exe");
+
+
+
 //data conecction with postgres
 define('DB_HOST', 'localhost');
 define('DB_PORT', '5432');     
@@ -44,10 +51,10 @@ if ($_FILES['fileShape']["error"][0] > 0){
                     //save file name
                     $name = $extensionfile[0];
                 }
-            }    
+            }            
             //convert file shape to sql and sabe file .sql in directory shape
             exec("shp2pgsql -W Latin1 -s 4326 ../shape/".$fileName." ".$name." > ../sql/".$name.".sql");
-            //string conecction with postgres
+            //string connection with postgres
             $db = new PDO('pgsql:host=' . DB_HOST . ';'
                              . 'port=' . DB_PORT . ';'
                              . 'dbname=' . DB_NAME . ';'
