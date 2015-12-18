@@ -13,16 +13,7 @@
     <body style="margin-bottom: 0; padding: 0;">
         <?php
             require_once("class/queryalert.php");
-            $tablaLevel = new Queryalert();
-            
-            if(!empty($_POST['rbtnLocality']) && !empty($_POST['rbtnAlert'])){
-                $locality = $_POST['rbtnLocality'];
-                $alert = $_POST['rbtnAlert'];                
-            }else{
-                
-                $msjError = ' Seleccione una alerta...';
-                header("Location: alerta.php?msj=$msjError");                
-            }
+            $tablaLevelMain = new Queryalert();            
         ?>
         <div class="contenido" id="container">
             <br>
@@ -62,7 +53,7 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($tablaLevel->getLevelLocality($locality,$alert) as $value) { ?>
+                                        foreach ($tablaLevelMain->getLevelMain() as $value) { ?>
                                         <tr>
                                             <?php 
                                             $localidad = explode('.', $value['nombre']);
