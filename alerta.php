@@ -25,7 +25,7 @@
                     <ul class="nav nav-pills nav-stacked">
                         <li role="presentation"><a href="tmain.php">Alerta General</a></li>
                         <li role="presentation"><a href="alerta.php">Historial de alerta</a></li>
-                        <li role="presentation"><a href="#">Mapa</a></li>
+                        
                     </ul>
                 </div>
                 <div class="col-md-10">

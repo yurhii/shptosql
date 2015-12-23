@@ -34,7 +34,7 @@
                     <ul class="nav nav-pills nav-stacked">
                         <li role="presentation"><a href="tmain.php">Alerta General</a></li>
                         <li role="presentation"><a href="alerta.php">Historial de alerta</a></li>
-                        <li role="presentation"><a href="#">Mapa</a></li>
+                        
                       </ul>
                 </div>
                 <div class="col-md-10">
@@ -44,7 +44,7 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <center>
-                                NIVEL DE ALERTAS GENERAL
+                                NIVEL DE ALERTAS 
                                 </center>
                             </div>
                             <div class="panel-body">
@@ -111,7 +111,7 @@
                                
                                 </div>
                                 <div class="col-md-4">
-                                <img src="public/image/nivel_alertas.gif">
+                                    <img src="public/image/nivel_alertas.jpg">
                                 </div>
                                     </div>
                             </div>

@@ -1,5 +1,12 @@
 <?php
 
+//copy($_FILES['fileShape']['tmp_name'][0], '../shape/'.$_FILES['fileShape']['name'][0]);
+
+//if (!copy($_FILES['fileShape']['tmp_name'][0], '../shape/'.$_FILES['fileShape']['name'][0])) {
+  //  echo "Error al copiar ...\n";
+//}
+
+
 //data conecction with postgres
 define('DB_HOST', 'localhost');
 define('DB_PORT', '5432');     
