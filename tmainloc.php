@@ -30,12 +30,14 @@ $locality = $_POST['rbtnLocality'];
 ?>
 <table class="table table-bordered">
     <thead style="background-color: #D9EDF7">
-    <th>Provincia</th>
-    <th>Distrito</th>
-    <th>Nivel 1</th>
-    <th>Nivel 2</th>
-    <th>Nivel 3</th>
-    <th>Nivel 4</th>
+        <th><center>Provincia</center></th>
+        <?php if($locality == 'Distrital'){ ?>
+        <th><center>Distrito</center></th>
+        <?php } ?>
+        <th><center>Nivel 1</center></th>
+        <th><center>Nivel 2</center></th>
+        <th><center>Nivel 3</center></th>
+        <th><center>Nivel 4</center></th>
     </thead>
     <tbody>
         <?php
@@ -63,7 +65,10 @@ $locality = $_POST['rbtnLocality'];
                     echo $provincia;
                 } ?>
             </td>
-            <td><?php echo $distrito; ?></td>                                            
+            <?php if($locality == 'Distrital'){ ?>
+                <td><?php echo $distrito; ?></td>
+            <?php } ?>
+                                                    
             <?php
             if($value['nivel1']=='Nivel 1'){
                 echo '<td style="background-color: #f5f5f5;"></td>';

@@ -32,8 +32,10 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation"><a href="tmain.php">Alerta General</a></li>
-                        <li role="presentation"><a href="alerta.php">Historial de alerta</a></li>
+                        
+                        <li role="presentation" class="active"><a href="#"><center>MENU</center></a></li>
+                        <li role="presentation"><a href="tmain.php"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Alerta General</a></li>
+                        <li role="presentation"><a href="alerta.php"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Historial de alerta</a></li>
                         
                       </ul>
                 </div>
@@ -41,7 +43,7 @@
                 
                	<div class="row">
                 <div class="col-md-12 col-md-offset-0">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <center>
                                 NIVEL DE ALERTAS 
@@ -53,12 +55,12 @@
                                     
                                   <table class="table table-bordered">
                                     <thead style="background-color: #D9EDF7">
-                                    <th>Provincia</th>
-                                    <th>Distrito</th>
-                                    <th>Nivel 1</th>
-                                    <th>Nivel 2</th>
-                                    <th>Nivel 3</th>
-                                    <th>Nivel 4</th>
+                                    <th><center>Provincia</center></th>
+                                    <th><center>Distrito</center></th>
+                                    <th><center>Nivel 1</center></th>
+                                    <th><center>Nivel 2</center></th>
+                                    <th><center>Nivel 3</center></th>
+                                    <th><center>Nivel 4</center></th>
                                     </thead>
                                     <tbody>
                                         <?php
@@ -111,7 +113,7 @@
                                
                                 </div>
                                 <div class="col-md-4">
-                                    <img src="public/image/nivel_alertas.jpg">
+                                    <img style="position: fixed;" src="public/image/nivel_alertas.jpg">
                                 </div>
                                     </div>
                             </div>

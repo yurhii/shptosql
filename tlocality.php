@@ -7,11 +7,11 @@ $loc = $_POST['txtLocality'];
 ?>
   <table class="table table-bordered">
     <thead style="background-color: #D9EDF7">                                    
-    <th>Distrito</th>
-    <th>Nivel 1</th>
-    <th>Nivel 2</th>
-    <th>Nivel 3</th>
-    <th>Nivel 4</th>
+    <th><center>Distrito</center></th>
+    <th><center>Nivel 1</center></th>
+    <th><center>Nivel 2</center></th>
+    <th><center>Nivel 3</center></th>
+    <th><center>Nivel 4</center></th>
     </thead>
     <tbody>
 

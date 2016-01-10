@@ -49,8 +49,10 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation"><a href="tmain.php">Alerta General</a></li>
-                        <li role="presentation"><a href="alerta.php">Historial de alerta</a></li>
+                        
+                        <li role="presentation" class="active"><a href="#"><center>MENU</center></a></li>
+                        <li role="presentation"><a href="tmain.php"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Alerta General</a></li>
+                        <li role="presentation"><a href="alerta.php"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Historial de alerta</a></li>
                         
                       </ul>
                 </div>
@@ -58,7 +60,7 @@
                 
                	<div class="row">
                 <div class="col-md-12 col-md-offset-0">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <center>
                                 NIVEL DE ALERTAS GENERAL
@@ -87,26 +89,28 @@
                                 </div>
                                     <input type="submit" value="Ver" class="btn btn-link" />
                             </form>
-                                    
-                                    <center>
-                                    <h4 id='loading' style="display: none;" >
-                                        <img src="public/image/loading.GIF">
-                                        Procesando Consulta, espere por favor.
-                                    </h4>
-                                    </center>
-                                    <br>
-                                    <div id="message">
-                                       
+                                     
+    <center>
+    <h4 id='loading' style="display: none;" >
+        <img src="public/image/loading.GIF">
+        Procesando Consulta, esperar por favor.
+    </h4>
+    </center>
+    <br>
+    <div id="message">
+                                      
 <table class="table table-bordered">
     <thead style="background-color: #D9EDF7">
-    <th>Provincia</th>
-    <th>Distrito</th>
-    <th>Nivel 1</th>
-    <th>Nivel 2</th>
-    <th>Nivel 3</th>
-    <th>Nivel 4</th>
+    <th><center>Provincia</center></th>
+    <th><center>Distrito</center></th>
+    <th><center>Nivel 1</center></th>
+    <th><center>Nivel 2</center></th>
+    <th><center>Nivel 3</center></th>
+    <th><center>Nivel 4</center></th>
     </thead>
+    
     <tbody>
+        
         <?php
         foreach ($tablaLevelMain->getLevelMain() as $value) { ?>
         <tr>
@@ -154,16 +158,21 @@
     <?php }
 
         ?>
+        
     </tbody>
+    
 </table>
                                         
-                                        
-                                    </div>                           
+    </div>                                    
+                           
                                
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4" >
+                                    <div style="position: fixed;" >
                                     <img src="public/image/nivel_alertas.jpg">
+                                    </div>
                                 </div>
+    
                                     </div>
                             </div>
                         </div>

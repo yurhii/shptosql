@@ -23,8 +23,10 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation"><a href="tmain.php">Alerta General</a></li>
-                        <li role="presentation"><a href="alerta.php">Historial de alerta</a></li>
+                        
+                        <li role="presentation" class="active"><a href="#"><center>MENU</center></a></li>
+                        <li role="presentation"><a href="tmain.php"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Alerta General</a></li>
+                        <li role="presentation"><a href="alerta.php"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Historial de alerta</a></li>
                         
                     </ul>
                 </div>
@@ -32,7 +34,7 @@
                 
                	<div class="row">
                 <div class="col-md-12 col-md-offset-0">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-default">
                             <div class="panel-heading">
                                 <center>
                                 HISTORIAL DE ALERTAS
@@ -69,11 +71,13 @@
                                     <br>
                                     <br>
                                 <table class="table table-bordered">
+                                    
                                     <thead style="background-color: #D9EDF7">                                    
-                                    <th>Título</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Fin</th>
+                                        <th><center>Título</center></th>                                    
+                                        <th><center>Fecha Inicio</center></th>
+                                        <th><center>Fecha Fin</center></th>                                    
                                     </thead>
+                                    
                                     <tbody>
                                         <?php
                                         foreach ($queryAlert->getAlertas() as $value) { ?>
@@ -82,8 +86,8 @@
                                                 <input type="radio" name="rbtnAlert" id="rbtnAlert" value="<?php echo $value['ale_nombre'];?>">
                                                 <?php echo $value['ale_nombre'];?>                                                
                                             </td>
-                                            <td><?php echo $value['ale_fecha_inicio']?></td>
-                                            <td><?php echo $value['ale_fecha_fin']?></td>
+                                            <td><center><?php echo $value['ale_fecha_inicio']?></center></td>
+                                            <td><center><?php echo $value['ale_fecha_fin']?></center></td>
                                         </tr>
                                         <?php                                     
                                         }
