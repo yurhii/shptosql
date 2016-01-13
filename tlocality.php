@@ -5,6 +5,8 @@ $tablaLevelMain = new Queryalert();
 $loc = $_POST['txtLocality'];
 
 ?>
+<div style="overflow: auto; height: 475px;">
+    
   <table class="table table-bordered">
     <thead style="background-color: #D9EDF7">                                    
     <th><center>Distrito</center></th>
@@ -63,3 +65,6 @@ $loc = $_POST['txtLocality'];
 
     </tbody>
 </table> 
+    
+    </div>
+

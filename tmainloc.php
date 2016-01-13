@@ -28,6 +28,7 @@ require_once("class/queryalert.php");
 $tablaLevelMain = new Queryalert();
 $locality = $_POST['rbtnLocality'];
 ?>
+        <div style="overflow: auto; height: 475px;">
 <table class="table table-bordered">
     <thead style="background-color: #D9EDF7">
         <th><center>Provincia</center></th>
@@ -103,3 +104,5 @@ $locality = $_POST['rbtnLocality'];
         ?>
     </tbody>
 </table> 
+
+            </div>

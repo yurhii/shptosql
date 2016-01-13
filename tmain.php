@@ -67,6 +67,36 @@
                                 </center>
                             </div>
                             <div class="panel-body">
+                                <center>
+                                    <div class="form-inline">
+                                        <?php foreach ($tablaLevelMain->dateLevelMain() as $value) { ?>
+                                        <div class="form-group">
+                                            <div class="radio">
+                                                <label><b>Fecha Inicial:</b> <?php echo $value['ale_fecha_inicio'];?>
+                                            </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="radio">
+                                                <label><b> | Fecha Final:</b> <?php echo $value['ale_fecha_fin'];?>
+                                            </label>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        
+                                        $dias = (strtotime($value['ale_fecha_inicio'])-strtotime($value['ale_fecha_fin']))/86400;
+                                        $dias = abs($dias); 
+                                        $dias = floor($dias);		                                        
+                                        ?>
+                                        <div class="form-group">
+                                            <div class="radio">
+                                                <label><b> | Total dias:</b> <?php echo $dias*24; ?> Hrs.
+                                            </label>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+                                        </center>
                                 <div class="row">
                                 <div class="col-md-8">
                                     
@@ -98,7 +128,7 @@
     </center>
     <br>
     <div id="message">
-                                      
+        <div style="overflow: auto; height: 475px;">
 <table class="table table-bordered">
     <thead style="background-color: #D9EDF7">
     <th><center>Provincia</center></th>
@@ -162,13 +192,13 @@
     </tbody>
     
 </table>
-                                        
+        </div>
     </div>                                    
                            
                                
                                 </div>
                                 <div class="col-md-4" >
-                                    <div style="position: fixed;" >
+                                    <div>
                                     <img src="public/image/nivel_alertas.jpg">
                                     </div>
                                 </div>

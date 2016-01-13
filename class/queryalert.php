@@ -6,12 +6,27 @@ class Queryalert extends Connection {
         parent::__construct();
     }
     
-    public function getLevelLocality($locality, $alert){
+    public function dateAleSel($alertid){
+        $resultDate = pg_query($this->con,"SELECT *
+                        FROM alerta.siaralerta
+                        WHERE ale_id = $alertid;");
+        return pg_fetch_all($resultDate);
+    }
+    public function getLevelLocality($locality, $alertid){
+        
+        $resultNameAle = pg_query($this->con,"SELECT ale_nombre
+                        FROM alerta.siaralerta
+                        WHERE ale_id = $alertid;");
+        $dataName = pg_fetch_all($resultNameAle);
+        foreach ($dataName as $value) {
+            $nameAle = $value['ale_nombre'];
+        }
+        
         // 1 = PROVINCIAL AND 2 == DISTRITAL
         if($locality == 1){
             $result = pg_query($this->con,"SELECT * FROM crosstab(
             $$ SELECT (b.provincia), a.nivel,a.nivel
-            FROM alerta.$alert a, geo.provincia b
+            FROM alerta.$nameAle a, geo.provincia b
             WHERE st_intersects(a.the_geom,transform(b.the_geom,4326)) = 't' order by provincia, nivel; $$,
             $$ SELECT ('Nivel'||' '||c.nro):: CHARACTER VARYING AS nivel
              FROM generate_series(1, 4) AS c(nro) $$
@@ -20,7 +35,7 @@ class Queryalert extends Connection {
             if($locality == 2){
                 $result = pg_query($this->con,"SELECT * FROM crosstab(
                 $$ SELECT (b.provincia||'.'||b.distrito), a.nivel,a.nivel
-                  FROM alerta.$alert  a, geo.distrito b
+                  FROM alerta.$nameAle  a, geo.distrito b
                   WHERE st_intersects(a.the_geom,transform(b.the_geom,4326)) = 't' order by provincia, distrito, nivel; $$,
                 $$ SELECT ('Nivel'||' '||c.nro):: CHARACTER VARYING AS nivel
                  FROM generate_series(1, 4) AS c(nro) $$
@@ -40,6 +55,12 @@ class Queryalert extends Connection {
             exit;
         }       
         return pg_fetch_all($result);
+    }
+    public function dateLevelMain(){
+        $resultDate = pg_query($this->con,"SELECT *
+                        FROM alerta.siaralerta
+                        WHERE ale_id = ( SELECT MAX(ale_id) FROM alerta.siaralerta );");
+        return pg_fetch_all($resultDate);
     }
     public function getLevelMain(){
         

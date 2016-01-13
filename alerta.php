@@ -70,6 +70,8 @@
                                     </div>
                                     <br>
                                     <br>
+                                    
+                                        
                                 <table class="table table-bordered">
                                     
                                     <thead style="background-color: #D9EDF7">                                    
@@ -83,7 +85,7 @@
                                         foreach ($queryAlert->getAlertas() as $value) { ?>
                                         <tr>                                            
                                             <td>                                                
-                                                <input type="radio" name="rbtnAlert" id="rbtnAlert" value="<?php echo $value['ale_nombre'];?>">
+                                                <input type="radio" name="rbtnAlert" id="rbtnAlert" value="<?php echo $value['ale_id'];?>">
                                                 <?php echo $value['ale_nombre'];?>                                                
                                             </td>
                                             <td><center><?php echo $value['ale_fecha_inicio']?></center></td>
@@ -94,6 +96,7 @@
                                         ?>
                                     </tbody>
                                 </table>
+                                        
                                     <button type="submit" class="btn btn-success">Ver Nivel de alertas </button>
                                 </form>                            
                                

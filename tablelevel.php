@@ -17,7 +17,7 @@
             
             if(!empty($_POST['rbtnLocality']) && !empty($_POST['rbtnAlert'])){
                 $locality = $_POST['rbtnLocality'];
-                $alert = $_POST['rbtnAlert'];                
+                $alertid = $_POST['rbtnAlert'];                
             }else{
                 
                 $msjError = ' Seleccione una alerta...';
@@ -50,9 +50,41 @@
                                 </center>
                             </div>
                             <div class="panel-body">
+                                
+                                <center>
+                                    <div class="form-inline">
+                                        <?php foreach ($tablaLevel->dateAleSel($alertid) as $value) { ?>
+                                        <div class="form-group">
+                                            <div class="radio">
+                                                <label><b>Fecha Inicial:</b> <?php echo $value['ale_fecha_inicio'];?>
+                                            </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="radio">
+                                                <label><b> | Fecha Final:</b> <?php echo $value['ale_fecha_fin'];?>
+                                            </label>
+                                            </div>
+                                        </div>
+                                        <?php
+                                        
+                                        $dias = (strtotime($value['ale_fecha_inicio'])-strtotime($value['ale_fecha_fin']))/86400;
+                                        $dias = abs($dias); 
+                                        $dias = floor($dias);		                                        
+                                        ?>
+                                        <div class="form-group">
+                                            <div class="radio">
+                                                <label><b> | Total dias:</b> <?php echo $dias*24; ?> Hrs.
+                                            </label>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+                                        </center>
+                                <br>
                                 <div class="row">
                                 <div class="col-md-8">
-                                    
+                                    <div style="overflow: auto; height: 485px;">
                                   <table class="table table-bordered">
                                     <thead style="background-color: #D9EDF7">
                                     <th><center>Provincia</center></th>
@@ -64,7 +96,7 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($tablaLevel->getLevelLocality($locality,$alert) as $value) { ?>
+                                        foreach ($tablaLevel->getLevelLocality($locality,$alertid) as $value) { ?>
                                         <tr>
                                             <?php 
                                             $localidad = explode('.', $value['nombre']);
@@ -110,10 +142,10 @@
                                         ?>
                                     </tbody>
                                 </table>                              
-                               
+                               </div>    
                                 </div>
                                 <div class="col-md-4">
-                                    <img style="position: fixed;" src="public/image/nivel_alertas.jpg">
+                                    <img src="public/image/nivel_alertas.jpg">
                                 </div>
                                     </div>
                             </div>
