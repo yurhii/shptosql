@@ -27,7 +27,7 @@ class Queryalert extends Connection {
             $result = pg_query($this->con,"SELECT * FROM crosstab(
             $$ SELECT (b.provincia), a.nivel,a.nivel
             FROM alerta.$nameAle a, geo.provincia b
-            WHERE st_intersects(a.the_geom,transform(b.the_geom,4326)) = 't' order by provincia, nivel; $$,
+            WHERE st_intersects(a.geom,st_transform(b.the_geom,4326)) = 't' order by provincia, nivel; $$,
             $$ SELECT ('Nivel'||' '||c.nro):: CHARACTER VARYING AS nivel
              FROM generate_series(1, 4) AS c(nro) $$
             ) AS (nombre TEXT, \"nivel1\" TEXT, \"nivel2\" TEXT, \"nivel3\" TEXT, \"nivel4\" TEXT);");
@@ -36,7 +36,7 @@ class Queryalert extends Connection {
                 $result = pg_query($this->con,"SELECT * FROM crosstab(
                 $$ SELECT (b.provincia||'.'||b.distrito), a.nivel,a.nivel
                   FROM alerta.$nameAle  a, geo.distrito b
-                  WHERE st_intersects(a.the_geom,transform(b.the_geom,4326)) = 't' order by provincia, distrito, nivel; $$,
+                  WHERE st_intersects(a.geom,st_transform(b.the_geom,4326)) = 't' order by provincia, distrito, nivel; $$,
                 $$ SELECT ('Nivel'||' '||c.nro):: CHARACTER VARYING AS nivel
                  FROM generate_series(1, 4) AS c(nro) $$
                 ) AS (nombre TEXT, \"nivel1\" TEXT, \"nivel2\" TEXT, \"nivel3\" TEXT, \"nivel4\" TEXT);");
@@ -75,7 +75,7 @@ class Queryalert extends Connection {
         $result = pg_query($this->con,"SELECT * FROM crosstab(
                 $$ SELECT (b.provincia||'.'||b.distrito), a.nivel,a.nivel
                   FROM alerta.$nameAle  a, geo.distrito b
-                  WHERE st_intersects(a.the_geom,transform(b.the_geom,4326)) = 't' order by provincia, distrito, nivel; $$,
+                  WHERE st_intersects(a.geom,st_transform(b.the_geom,4326)) = 't' order by provincia, distrito, nivel; $$,
                 $$ SELECT ('Nivel'||' '||c.nro):: CHARACTER VARYING AS nivel
                  FROM generate_series(1, 4) AS c(nro) $$
                 ) AS (nombre TEXT, \"nivel1\" TEXT, \"nivel2\" TEXT, \"nivel3\" TEXT, \"nivel4\" TEXT);");
@@ -98,7 +98,7 @@ class Queryalert extends Connection {
             $result = pg_query($this->con,"SELECT * FROM crosstab(
             $$ SELECT (b.provincia), a.nivel,a.nivel
             FROM alerta.$nameAle a, geo.provincia b
-            WHERE st_intersects(a.the_geom,transform(b.the_geom,4326)) = 't' order by provincia, nivel; $$,
+            WHERE st_intersects(a.geom,st_transform(b.the_geom,4326)) = 't' order by provincia, nivel; $$,
             $$ SELECT ('Nivel'||' '||c.nro):: CHARACTER VARYING AS nivel
              FROM generate_series(1, 4) AS c(nro) $$
             ) AS (nombre TEXT, \"nivel1\" TEXT, \"nivel2\" TEXT, \"nivel3\" TEXT, \"nivel4\" TEXT);");
@@ -107,7 +107,7 @@ class Queryalert extends Connection {
                 $result = pg_query($this->con,"SELECT * FROM crosstab(
                 $$ SELECT (b.provincia||'.'||b.distrito), a.nivel,a.nivel
                   FROM alerta.$nameAle  a, geo.distrito b
-                  WHERE st_intersects(a.the_geom,transform(b.the_geom,4326)) = 't' order by provincia, distrito, nivel; $$,
+                  WHERE st_intersects(a.geom,st_transform(b.the_geom,4326)) = 't' order by provincia, distrito, nivel; $$,
                 $$ SELECT ('Nivel'||' '||c.nro):: CHARACTER VARYING AS nivel
                  FROM generate_series(1, 4) AS c(nro) $$
                 ) AS (nombre TEXT, \"nivel1\" TEXT, \"nivel2\" TEXT, \"nivel3\" TEXT, \"nivel4\" TEXT);");
@@ -130,7 +130,7 @@ class Queryalert extends Connection {
         $result = pg_query($this->con,"SELECT * FROM crosstab(
                 $$ SELECT (b.provincia||'.'||b.distrito), a.nivel,a.nivel
                   FROM alerta.$nameAle  a, geo.distrito b
-                  WHERE st_intersects(a.the_geom,transform(b.the_geom,4326)) = 't' and b.provincia = '$pro' order by provincia, distrito, nivel; $$,
+                  WHERE st_intersects(a.geom,st_transform(b.the_geom,4326)) = 't' and b.provincia = '$pro' order by provincia, distrito, nivel; $$,
                 $$ SELECT ('Nivel'||' '||c.nro):: CHARACTER VARYING AS nivel
                  FROM generate_series(1, 4) AS c(nro) $$
                 ) AS (nombre TEXT, \"nivel1\" TEXT, \"nivel2\" TEXT, \"nivel3\" TEXT, \"nivel4\" TEXT);");

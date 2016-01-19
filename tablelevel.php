@@ -24,6 +24,12 @@
                 header("Location: alerta.php?msj=$msjError");                
             }
         ?>
+        <div class="cabecera" id="header">
+        <?php
+            require_once("class/cabecera.php")
+        ?>
+            
+        </div>
         <div class="contenido" id="container">
             <br>
             <div class="col-md-12">
